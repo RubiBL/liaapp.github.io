@@ -2,49 +2,70 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>L.I.A APP</title>
+  <title>L.I.A - Presentación</title>
+  <!-- Fuente e íconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> <!-- Reemplaza con tu kit o usa CDN abajo -->
+
+  <!-- Íconos CDN alternativo -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
     :root {
       --azul-rey: #0033a0;
+      --azul-oscuro: #001e66;
       --blanco: #ffffff;
-      --gris-claro: #f4f4f4;
+      --gris-claro: #f0f2f5;
+      --sombra: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--gris-claro);
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, var(--gris-claro), #e6ecf4);
       color: #333;
     }
 
     header {
-      background-color: var(--azul-rey);
+      background: linear-gradient(135deg, var(--azul-rey), var(--azul-oscuro));
       color: var(--blanco);
-      padding: 40px 20px;
+      padding: 60px 20px;
       text-align: center;
+      box-shadow: 0 4px 10px var(--sombra);
     }
 
     header h1 {
       margin: 0;
-      font-size: 3em;
-      font-weight: bold;
+      font-size: 3.2em;
+      font-weight: 700;
     }
 
     main {
-      padding: 40px 20px;
+      padding: 50px 20px;
       max-width: 1000px;
       margin: auto;
     }
 
     section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .descripcion {
       background-color: var(--blanco);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px var(--sombra);
+      transition: transform 0.3s ease;
+    }
+
+    .descripcion:hover {
+      transform: scale(1.01);
     }
 
     .descripcion h2 {
@@ -58,30 +79,44 @@
 
     .redes h2 {
       color: var(--azul-rey);
+      margin-bottom: 20px;
+    }
+
+    .iconos-redes {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     .iconos-redes a {
       text-decoration: none;
-      margin: 0 15px;
-      display: inline-block;
-      font-size: 1.2em;
       color: var(--azul-rey);
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       border: 2px solid var(--azul-rey);
-      padding: 10px 15px;
-      border-radius: 5px;
+      padding: 10px 20px;
+      border-radius: 10px;
       transition: all 0.3s ease;
+      background-color: var(--blanco);
+      box-shadow: 0 4px 10px var(--sombra);
     }
 
     .iconos-redes a:hover {
       background-color: var(--azul-rey);
       color: var(--blanco);
+      transform: translateY(-3px);
     }
 
     footer {
       text-align: center;
       font-size: 0.9em;
-      color: #888;
-      padding: 20px;
+      color: #666;
+      padding: 30px 20px;
+      background-color: #e0e6f0;
+      border-top: 1px solid #ccc;
     }
   </style>
 </head>
@@ -94,29 +129,25 @@
   <main>
     <section class="descripcion">
       <h2>¿Qué es L.I.A?</h2>
-      <p>
-        <strong>L.I.A (Learning and Interaction Assistant)</strong> es una solución tecnológica desarrollada como aplicación móvil para dispositivos Android, orientada a optimizar la gestión de tareas académicas y de comunicación mediante la integración con servicios de Google.
-      </p>
-      <p>
-        El sistema está diseñado para asistir a usuarios en la organización de su calendario, la administración de contactos y el envío de correos electrónicos, todo desde una interfaz inteligente y adaptable.
-      </p>
-      <p>
-        Su implementación responde a la necesidad de automatizar procesos rutinarios en contextos escolares y laborales, contribuyendo a mejorar la productividad y la eficiencia en la interacción diaria.
-      </p>
-      <p>
-        L.I.A permite centralizar funciones clave dentro de un entorno controlado, brindando soporte personalizado según el contexto temporal y los datos del usuario.
-      </p>
-      <p>
-        El proyecto se enfoca en la usabilidad y la integración eficiente de servicios ya existentes, reduciendo la carga operativa sin requerir conocimientos técnicos avanzados por parte del usuario final. Su portabilidad en plataformas móviles facilita su incorporación en entornos educativos o corporativos que demandan soluciones accesibles y funcionales.
-      </p>
+      <p><strong>L.I.A (Learning and Interaction Assistant)</strong> es una solución tecnológica desarrollada como aplicación móvil para dispositivos Android, orientada a optimizar la gestión de tareas académicas y de comunicación mediante la integración con servicios de Google.</p>
+      <p>El sistema está diseñado para asistir a usuarios en la organización de su calendario, la administración de contactos y el envío de correos electrónicos, todo desde una interfaz inteligente y adaptable.</p>
+      <p>Su implementación responde a la necesidad de automatizar procesos rutinarios en contextos escolares y laborales, contribuyendo a mejorar la productividad y la eficiencia en la interacción diaria.</p>
+      <p>L.I.A permite centralizar funciones clave dentro de un entorno controlado, brindando soporte personalizado según el contexto temporal y los datos del usuario.</p>
+      <p>El proyecto se enfoca en la usabilidad y la integración eficiente de servicios ya existentes, reduciendo la carga operativa sin requerir conocimientos técnicos avanzados por parte del usuario final. Su portabilidad en plataformas móviles facilita su incorporación en entornos educativos o corporativos que demandan soluciones accesibles y funcionales.</p>
     </section>
 
     <section class="redes">
-      <h2>Conéctate con nosotros</h2>
+      <h2>Síguenos en redes sociales</h2>
       <div class="iconos-redes">
-        <a href="https://github.com/rubibl/liaapp.github.io" target="_blank">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Twitter</a>
+        <a href="https://github.com/rubibl" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="www.linkedin.com/in/ruben-barrios-luna-a6aa4831a" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://www.instagram.com/ruben_universe/" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
       </div>
     </section>
   </main>
@@ -127,4 +158,3 @@
 
 </body>
 </html>
-
