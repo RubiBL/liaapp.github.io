@@ -3,26 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>L.I.A - Presentación</title>
+
   <!-- Fuente e íconos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> <!-- Reemplaza con tu kit o usa CDN abajo -->
-
-  <!-- Íconos CDN alternativo -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
+
     :root {
       --azul-rey: #0033a0;
       --azul-oscuro: #001e66;
       --blanco: #ffffff;
       --gris-claro: #f0f2f5;
       --sombra: rgba(0, 0, 0, 0.1);
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     body {
@@ -32,28 +27,44 @@
       color: #333;
     }
 
+    /* -------- BOTÓN DE IDIOMA -------- */
+    .idioma-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      background: var(--blanco);
+      border: 2px solid var(--azul-rey);
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .idioma-btn:hover {
+      background: var(--azul-rey);
+      color: var(--blanco);
+    }
+
+    /* -------- CABECERA -------- */
     header {
       background: linear-gradient(135deg, var(--azul-rey), var(--azul-oscuro));
       color: var(--blanco);
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
       box-shadow: 0 4px 10px var(--sombra);
     }
-
     header h1 {
       margin: 0;
       font-size: 3.2em;
       font-weight: 700;
     }
 
+    /* -------- MAIN -------- */
     main {
       padding: 50px 20px;
       max-width: 1000px;
       margin: auto;
-    }
-
-    section {
-      margin-bottom: 50px;
     }
 
     .descripcion {
@@ -61,11 +72,6 @@
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 8px 20px var(--sombra);
-      transition: transform 0.3s ease;
-    }
-
-    .descripcion:hover {
-      transform: scale(1.01);
     }
 
     .descripcion h2 {
@@ -73,87 +79,349 @@
       margin-top: 0;
     }
 
-    .redes {
-      text-align: center;
-    }
+   .equipo-carousel {
+  margin: 50px 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: white;
+  padding: 40px 0 70px; /* espacio para indicadores */
+  box-shadow: 0 8px 20px var(--sombra);
+}
 
-    .redes h2 {
-      color: var(--azul-rey);
-      margin-bottom: 20px;
-    }
+/* Contenedor del carrusel */
+.equipo-track {
+  display: flex;
+  transition: transform 0.7s ease;
+}
 
-    .iconos-redes {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+/* Cada perfil */
+.equipo-item {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  box-sizing: border-box;
+  text-align: center;
+}
 
-    .iconos-redes a {
-      text-decoration: none;
-      color: var(--azul-rey);
-      font-size: 1.2em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 2px solid var(--azul-rey);
-      padding: 10px 20px;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      background-color: var(--blanco);
-      box-shadow: 0 4px 10px var(--sombra);
-    }
+.equipo-foto {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--azul-rey);
+  box-shadow: 0 4px 10px var(--sombra);
+}
 
-    .iconos-redes a:hover {
-      background-color: var(--azul-rey);
-      color: var(--blanco);
-      transform: translateY(-3px);
-    }
+.equipo-item h3 {
+  margin-top: 15px;
+  font-size: 1.8em;
+  color: var(--azul-rey);
+}
 
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
-      padding: 30px 20px;
-      background-color: #e0e6f0;
-      border-top: 1px solid #ccc;
-    }
+.equipo-rol {
+  font-weight: bold;
+  color: var(--azul-oscuro);
+}
+
+.equipo-desc {
+  max-width: 700px;
+  margin: 10px auto 20px;
+  line-height: 1.4;
+}
+
+.equipo-link {
+  display: inline-block;
+  background: var(--azul-rey);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.equipo-link:hover {
+  background: var(--azul-oscuro);
+}
+
+/* ---------------- INDICADORES ---------------- */
+
+.equipo-indicadores {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.equipo-indicadores .dot {
+  width: 14px;
+  height: 14px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.equipo-indicadores .dot.active {
+  background: var(--azul-rey);
+  transform: scale(1.2);
+}
+
+
+/* -------- CONTACTOS -------- */
+
+.contactos h2 {
+  color: var(--azul-rey);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.contacto-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  padding: 18px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px var(--sombra);
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.contacto-item:hover {
+  transform: translateY(-4px);
+}
+
+.contacto-item i {
+  font-size: 30px;
+  color: var(--azul-rey);
+}
+
+.contacto-item a {
+  color: var(--azul-oscuro);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contacto-item a:hover {
+  color: var(--azul-rey);
+}
+
+/* -------- FOOTER -------- */
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  padding: 30px 20px;
+  background-color: #e0e6f0;
+  border-top: 1px solid #ccc;
+}
+
   </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>L.I.A - Learning and Interaction Assistant</h1>
-  </header>
+<button class="idioma-btn" onclick="cambiarIdioma()">EN</button>
 
-  <main>
-    <section class="descripcion">
-      <h2>¿Qué es L.I.A?</h2>
-      <p><strong>L.I.A (Learning and Interaction Assistant)</strong> es una solución tecnológica desarrollada como aplicación móvil para dispositivos Android, orientada a optimizar la gestión de tareas académicas y de comunicación mediante la integración con servicios de Google.</p>
-    </section>
+<header>
+  <h1 data-es="L.I.A - Asistente de aprendizaje e interacción"
+      data-en="L.I.A - Learning and Interaction Assistant">
+    L.I.A - Asistente de aprendizaje e interacción
+  </h1>
+</header>
 
-    <section class="redes">
-      <h2>Síguenos en redes sociales</h2>
-      <div class="iconos-redes">
-        <a href="https://github.com/rubibl" target="_blank">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/ruben-barrios-luna-a6aa4831a" target="_blank">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="https://www.instagram.com/ruben_universe/" target="_blank">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
+<main>
+
+  <!-- DESCRIPCIÓN -->
+  <section class="descripcion">
+    <h2 data-es="¿Qué es L.I.A?" data-en="What is L.I.A?">¿Qué es L.I.A?</h2>
+
+    <p id="text-descripcion"
+       data-es="L.I.A es una solución tecnológica desarrollada como aplicación móvil para dispositivos Android, orientada a optimizar la gestión de tareas académicas y de comunicación mediante la integración con servicios de Google. El sistema está diseñado para asistir a usuarios en la organización de su calendario, la administración de contactos y el envío de correos electrónicos, todo desde una interfaz inteligente y adaptable."
+       data-en="L.I.A. is a technological solution developed as a mobile application for Android devices, designed to optimize the management of academic and communication tasks through integration with Google services. The system is designed to assist users in organizing their calendar, managing contacts, and sending emails, all from a smart and adaptable interface.">
+       L.I.A es una solución tecnológica desarrollada como aplicación móvil para dispositivos Android, orientada a optimizar la gestión de tareas académicas y de comunicación mediante la integración con servicios de Google. El sistema está diseñado para asistir a usuarios en la organización de su calendario, la administración de contactos y el envío de correos electrónicos, todo desde una interfaz inteligente y adaptable. 
+    </p>
+  </section>
+
+  <!-- CARRUSEL DEL EQUIPO -->
+ <div class="equipo-carousel">
+  <div class="equipo-track" id="equipoTrack">
+
+    <!-- Miembro 1 -->
+    <div class="equipo-item">
+      <img src="https://picsum.photos/300?1" class="equipo-foto">
+      <h3
+        data-es="Ruben Barrios Luna"
+        data-en="Ruben Barrios Luna">
+        Ruben Barrios Luna
+      </h3>
+
+      <p class="equipo-rol"
+         data-es="Desarrollador Principal"
+         data-en="Lead Developer">
+         Desarrollador Principal
+      </p>
+
+      <p class="equipo-desc"
+         data-es="Encargado de programación, desarrollo y arquitectura del proyecto L.I.A."
+         data-en="Responsible for programming, development, and architecture of the L.I.A project.">
+         Encargado de programación, desarrollo y arquitectura del proyecto L.I.A.
+      </p>
+
+      <a class="equipo-link" href="https://github.com/rubibl" target="_blank">
+        Ver Perfil
+      </a>
+    </div>
+
+    <!-- Miembro 2 -->
+    <div class="equipo-item">
+      <img src="https://picsum.photos/300?2" class="equipo-foto">
+      <h3
+        data-es="Danna Esperanza Reyes Zaragoza"
+        data-en="Danna Esperanza Reyes Zaragoza">
+        Danna Esperanza Reyes Zaragoza
+      </h3>
+
+      <p class="equipo-rol"
+         data-es="Diseñadora"
+         data-en="Designer">
+         Diseñadora
+      </p>
+
+      <p class="equipo-desc"
+         data-es="Encargada de los diseños de la aplicación."
+         data-en="Responsible for the application's designs.">
+         Encargada de los diseños de la aplicación.
+      </p>
+
+      <a class="equipo-link" href="#" target="_blank">
+        Ver Perfil
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Indicadores -->
+  <div class="equipo-indicadores" id="indicadores"></div>
+</div>
+  <!-- SECCIÓN DE REDES PARA UNIRSE A LA BETA -->
+<section class="descripcion">
+  <h2 data-es="Forma parte de la beta"
+      data-en="Be part of the beta">
+    Forma parte de la beta
+  </h2>
+
+  <div class="iconos-redes">
+    <a href="https://forms.gle/tu-formulario-aqui" target="_blank">
+      <i class="fa-regular fa-clipboard"></i>
+      <span data-es="Unirme a la Beta" data-en="Join the Beta">Unirme a la Beta</span>
+    </a>
+  </div>
+</section>
+
+
+
+  <!-- CONTACTOS -->
+  <section class="contactos">
+    <h2
+    data-es="Contactos"
+    data-en="Contacts"
+    >
+    Contactos</h2>
+
+    <div class="contacto-item">
+      <i class="fa-solid fa-envelope"></i>
+      <div>
+        <strong>Ruben Barrios Luna</strong><br>
+        <a href="mailto:rubenbarriosluna@gmail.com">rubenbarriosluna@gmail.com</a>
       </div>
-    </section>
-  </main>
+    </div>
 
-  <footer>
-    &copy; 2025 L.I.A Project - Todos los derechos reservados.
-  </footer>
+    <div class="contacto-item">
+      <i class="fa-solid fa-envelope"></i>
+      <div>
+        <strong>L.I.A</strong><br>
+        <a href="mailto:lia.asistente.ai@gmail.com">lia.asistente.ai@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer
+ data-es="© 2025 L.I.A - Todos los derechos reservados."
+  data-en="© 2025 L.I.A - All rights reserved.">
+ 
+  © 2025 L.I.A - Todos los derechos reservados.
+</footer>
+
+
+<!----------------- JS ----------------->
+<script>
+let idiomaActual = "es"; // idioma inicial
+
+function cambiarIdioma() {
+  idiomaActual = idiomaActual === "es" ? "en" : "es";
+
+  // Cambiar texto de todos los elementos con data-es y data-en
+  document.querySelectorAll("[data-es]").forEach(el => {
+    el.textContent = el.getAttribute(`data-${idiomaActual}`);
+  });
+
+  // Cambiar texto del botón EN/ES
+  const btn = document.querySelector(".idioma-btn");
+  btn.textContent = idiomaActual === "es" ? "EN" : "ES";
+}
+</script>
+
+<script>
+let equipoIndex = 0;
+
+const track = document.getElementById("equipoTrack");
+const items = track.children.length;
+
+const indicadores = document.getElementById("indicadores");
+
+// Crear indicadores
+for (let i = 0; i < items; i++) {
+  const dot = document.createElement("div");
+  dot.classList.add("dot");
+  if (i === 0) dot.classList.add("active");
+
+  dot.addEventListener("click", () => {
+    equipoIndex = i;
+    actualizarCarrusel();
+    reiniciarAutoSlide();
+  });
+
+  indicadores.appendChild(dot);
+}
+
+function actualizarCarrusel() {
+  track.style.transform = `translateX(-${equipoIndex * 100}%)`;
+
+  // actualizar indicador activo
+  [...indicadores.children].forEach((d, idx) => {
+    d.classList.toggle("active", idx === equipoIndex);
+  });
+}
+
+function autoSlide() {
+  equipoIndex = (equipoIndex + 1) % items;
+  actualizarCarrusel();
+}
+
+let autoSlideInterval = setInterval(autoSlide, 5000);
+
+function reiniciarAutoSlide() {
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(autoSlide, 5000);
+}
+</script>
+
 
 </body>
 </html>
-
-
-
