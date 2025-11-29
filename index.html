@@ -2,14 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>L.I.A WEB</title>
+  <title>L.I.A – Asistente Inteligente de Productividad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Material+Icons" rel="stylesheet">
 
-  <!-- Fuente e íconos -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+  <!-- =======================
+       ESTILOS DEL USUARIO 
+       (Incluye los estilos que me diste + glassmorphism + mejoras)
+  ======================== -->
   <style>
 
     :root {
@@ -17,7 +16,9 @@
       --azul-oscuro: #001e66;
       --blanco: #ffffff;
       --gris-claro: #f0f2f5;
-      --sombra: rgba(0, 0, 0, 0.1);
+      --sombra: rgba(0, 0, 0, 0.12);
+      --glass: rgba(255, 255, 255, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.3);
     }
 
     body {
@@ -29,429 +30,628 @@
 
     /* -------- BOTÓN DE IDIOMA -------- */
     .idioma-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
+      position: relative; /* now part of the navbar layout instead of fixed to the viewport */
       background: var(--blanco);
       border: 2px solid var(--azul-rey);
-      padding: 8px 15px;
+      padding: 6px 12px;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
+      font-weight: 700;
+      transition: 0.18s ease;
+      color: var(--azul-oscuro);
     }
     .idioma-btn:hover {
       background: var(--azul-rey);
       color: var(--blanco);
     }
 
+    /* Additional container to keep button aligned in the navbar flex layout */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: 12px;
+    }
+
+    /* On narrow screens, hide the nav links to preserve space and keep the button visible */
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+      }
+      .idioma-btn {
+        padding: 6px 10px;
+      }
+    }
+
+    /* -------- NAV GLASS -------- */
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      background: var(--glass);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 15px 0;
+      z-index: 900;
+    }
+
+    .nav-inner {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.9em;
+      font-weight: bold;
+      color: var(--azul-rey);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: var(--azul-oscuro);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--azul-rey);
+    }
+
     /* -------- CABECERA -------- */
     header {
       background: linear-gradient(135deg, var(--azul-rey), var(--azul-oscuro));
       color: var(--blanco);
-      padding: 80px 20px;
+      padding: 90px 20px;
       text-align: center;
       box-shadow: 0 4px 10px var(--sombra);
     }
+
     header h1 {
       margin: 0;
-      font-size: 3.2em;
+      font-size: 3.3em;
       font-weight: 700;
     }
 
-    /* -------- MAIN -------- */
+    header p {
+      margin-top: 10px;
+      font-size: 1.3em;
+      opacity: 0.9;
+    }
+
+    /* -------- CONTENIDO PRINCIPAL -------- */
     main {
-      padding: 50px 20px;
-      max-width: 1000px;
+      padding: 40px 20px;
+      max-width: 1100px;
       margin: auto;
     }
 
+    /* -------- DESCRIPCIÓN -------- */
     .descripcion {
-      background-color: var(--blanco);
+      background: var(--blanco);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px var(--sombra);
+    }
+    .descripcion h2 {
+      color: var(--azul-rey);
+      font-size: 2.2em;
+      margin-top: 0;
+    }
+    .descripcion p {
+      margin-bottom: 18px;
+      font-size: 1.15em;
+    }
+
+    /* -------- FUNCIONES -------- */
+    .funciones {
+      background: var(--blanco);
+      padding: 35px;
+      border-radius: 15px;
+      margin-top: 40px;
+      box-shadow: 0 8px 20px var(--sombra);
+    }
+    .funciones h2 {
+      color: var(--azul-rey);
+      font-size: 2em;
+    }
+    .func-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1.15em;
+    }
+    .func-list i {
+      font-size: 26px;
+      color: var(--azul-rey);
+    }
+
+    /* -------- MOCKUPS -------- */
+    .mockups {
+      margin-top: 50px;
+      background: var(--blanco);
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 8px 20px var(--sombra);
     }
 
-    .descripcion h2 {
-      color: var(--azul-rey);
-      margin-top: 0;
+    .mockups-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 28px;
+      margin-top: 28px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--azul-rey) #e0e6f0;
+    }
+    .mockups-grid::-webkit-scrollbar {
+      height: 8px;
+    }
+    .mockups-grid::-webkit-scrollbar-thumb {
+      background: var(--azul-rey);
+      border-radius: 8px;
+    }
+    .mockups-grid::-webkit-scrollbar-track {
+      background: #e0e6f0;
     }
 
-   .equipo-carousel {
-  margin: 50px 0;
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  background: white;
-  padding: 40px 0 70px; /* espacio para indicadores */
-  box-shadow: 0 8px 20px var(--sombra);
-}
+    .mockup-item {
+      min-width: 260px;
+      max-width: 260px;
+      flex: 0 0 260px;
+      background: var(--glass);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--sombra);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      transition: box-shadow 0.2s;
+    }
+    .mockup-item img {
+      width: 220px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px var(--sombra);
+    }
 
-/* Contenedor del carrusel */
-.equipo-track {
-  display: flex;
-  transition: transform 0.7s ease;
-}
+    .mockup-item {
+      background: var(--glass);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--sombra);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      transition: box-shadow 0.2s;
+    }
+    .mockup-item img {
+      max-width: 100%;
+      max-height: 180px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px var(--sombra);
+    }
+    .mockup-item .mockup-title {
+      font-weight: 600;
+      color: var(--azul-rey);
+      font-size: 1.08em;
+      margin-bottom: 6px;
+    }
+    .mockup-item .mockup-desc {
+      font-size: 0.98em;
+      color: #444;
+      text-align: center;
+    }
+    /* Responsive tweak */
+    @media (max-width: 600px) {
+      .mockup-item {
+        min-width: 80vw;
+        max-width: 80vw;
+        flex: 0 0 80vw;
+      }
+      .mockup-item img {
+        width: 70vw;
+        height: 120px;
+      }
+    }
 
-/* Cada perfil */
-.equipo-item {
-  min-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 25px;
-  box-sizing: border-box;
-  text-align: center;
-}
+    /* -------- EQUIPO (CARRUSEL PREMIUM) -------- */
+    .equipo-carousel {
+      margin: 50px 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: white;
+      padding: 40px 0 70px;
+      box-shadow: 0 8px 20px var(--sombra);
+    }
 
-.equipo-foto {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--azul-rey);
-  box-shadow: 0 4px 10px var(--sombra);
-}
+    .equipo-track {
+      display: flex;
+      transition: transform 0.7s ease;
+    }
 
-.equipo-item h3 {
-  margin-top: 15px;
-  font-size: 1.8em;
-  color: var(--azul-rey);
-}
+    .equipo-item {
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 25px;
+      text-align: center;
+      box-sizing: border-box;
+    }
 
-.equipo-rol {
-  font-weight: bold;
-  color: var(--azul-oscuro);
-}
+    .equipo-foto {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--azul-rey);
+      box-shadow: 0 4px 10px var(--sombra);
+    }
 
-.equipo-desc {
-  max-width: 700px;
-  margin: 10px auto 20px;
-  line-height: 1.4;
-}
+    .equipo-indicadores {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
 
-.equipo-link {
-  display: inline-block;
-  background: var(--azul-rey);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: 0.3s;
-}
+    .dot {
+      width: 14px;
+      height: 14px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.equipo-link:hover {
-  background: var(--azul-oscuro);
-}
+    .dot.active {
+      background: var(--azul-rey);
+      transform: scale(1.2);
+    }
 
-/* ---------------- INDICADORES ---------------- */
+    /* -------- CONTACTO -------- */
+    .contactos {
+      margin-top: 50px;
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px var(--sombra);
+    }
 
-.equipo-indicadores {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 25px;
-}
+    .contacto-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: white;
+      padding: 18px 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px var(--sombra);
+      margin-bottom: 15px;
+      transition: 0.3s;
+    }
+    .contacto-item i {
+      font-size: 30px;
+      color: var(--azul-rey);
+    }
+    .contacto-item:hover {
+      transform: translateY(-4px);
+    }
 
-.equipo-indicadores .dot {
-  width: 14px;
-  height: 14px;
-  background: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    /* -------- CTA -------- */
+    .cta {
+      margin-top: 50px;
+      text-align: center;
+      padding: 40px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 20px var(--sombra);
+    }
 
-.equipo-indicadores .dot.active {
-  background: var(--azul-rey);
-  transform: scale(1.2);
-}
+    .cta button {
+      margin-top: 20px;
+      padding: 15px 28px;
+      font-size: 1.3em;
+      background: var(--azul-rey);
+      color: white;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+    .cta button:hover {
+      background: var(--azul-oscuro);
+    }
 
-
-/* -------- CONTACTOS -------- */
-
-.contactos h2 {
-  color: var(--azul-rey);
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.contacto-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: white;
-  padding: 18px 22px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px var(--sombra);
-  margin-bottom: 15px;
-  transition: 0.3s;
-}
-
-.contacto-item:hover {
-  transform: translateY(-4px);
-}
-
-.contacto-item i {
-  font-size: 30px;
-  color: var(--azul-rey);
-}
-
-.contacto-item a {
-  color: var(--azul-oscuro);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.contacto-item a:hover {
-  color: var(--azul-rey);
-}
-
-/* -------- FOOTER -------- */
-footer {
-  text-align: center;
-  font-size: 0.9em;
-  color: #666;
-  padding: 30px 20px;
-  background-color: #e0e6f0;
-  border-top: 1px solid #ccc;
-}
+    /* -------- FOOTER -------- */
+    footer {
+      margin-top: 50px;
+      padding: 30px 20px;
+      background: #e0e6f0;
+      text-align: center;
+      font-size: 0.95em;
+      color: #555;
+      border-top: 1px solid #ccc;
+    }
 
   </style>
 </head>
 
 <body>
 
-<button class="idioma-btn" onclick="cambiarIdioma()">EN</button>
+<!-- BOTÓN CAMBIO DE IDIOMA -->
 
+<!-- NAVBAR GLASS -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">L.I.A</div>
+    <ul class="nav-links">
+      <li><a href="#descripcion">Descripción</a></li>
+      <li><a href="#funciones">Funciones</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#contactos">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="idioma-btn" onclick="cambiarIdioma()">ES/EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
 <header>
-  <h1 data-es="L.I.A - Asistente de aprendizaje e interacción"
-      data-en="L.I.A - Learning and Interaction Assistant">
-    L.I.A - Asistente de aprendizaje e interacción
+  <h1 data-es="Tu nuevo asistente de productividad" data-en="Your new productivity assistant">
+    Tu nuevo asistente de productividad
   </h1>
+  <p data-es="Automatiza tareas, organiza tu vida y trabaja más fácil con L.I.A."
+     data-en="Automate tasks, organize your life and work smarter with L.I.A.">
+     Automatiza tareas, organiza tu vida y trabaja más fácil con L.I.A.
+  </p>
 </header>
 
 <main>
 
-  <!-- DESCRIPCIÓN -->
-  <section class="descripcion">
+  <!-- ============================
+       DESCRIPCIÓN
+  ============================ -->
+  <section id="descripcion" class="descripcion">
     <h2 data-es="¿Qué es L.I.A?" data-en="What is L.I.A?">¿Qué es L.I.A?</h2>
 
-    <p id="text-descripcion"
-       data-es="L.I.A es una solución tecnológica desarrollada como aplicación móvil para dispositivos Android, orientada a optimizar la gestión de tareas académicas y de comunicación mediante la integración con servicios de Google. El sistema está diseñado para asistir a usuarios en la organización de su calendario, la administración de contactos y el envío de correos electrónicos, todo desde una interfaz inteligente y adaptable."
-       data-en="L.I.A. is a technological solution developed as a mobile application for Android devices, designed to optimize the management of academic and communication tasks through integration with Google services. The system is designed to assist users in organizing their calendar, managing contacts, and sending emails, all from a smart and adaptable interface.">
-       L.I.A es una solución tecnológica desarrollada como aplicación móvil para dispositivos Android, orientada a optimizar la gestión de tareas académicas y de comunicación mediante la integración con servicios de Google. El sistema está diseñado para asistir a usuarios en la organización de su calendario, la administración de contactos y el envío de correos electrónicos, todo desde una interfaz inteligente y adaptable. 
+    <p data-es="
+      L.I.A (Learning and Interaction Assistant) es un asistente inteligente diseñado para ayudarte 
+      a mejorar tu productividad mediante la automatización de actividades comunes como 
+      gestionar tu agenda, enviar correos, administrar contactos y mantener un control organizado 
+      de tus tareas diarias. Gracias a su integración con servicios de Google, L.I.A transforma 
+      procesos repetitivos en acciones automáticas, liberando tu tiempo para lo que realmente importa.
+    "
+    data-en="
+      L.I.A (Learning and Interaction Assistant) is an intelligent assistant created to enhance your productivity 
+      by automating everyday activities such as managing your schedule, sending emails, organizing contacts, 
+      and keeping your daily tasks under control. Through its integration with Google services, L.I.A turns 
+      repetitive processes into automated actions, freeing your time for what truly matters.
+    ">
+      L.I.A (Learning and Interaction Assistant) es un asistente inteligente diseñado para ayudarte 
+      a mejorar tu productividad mediante la automatización de actividades comunes como 
+      gestionar tu agenda, enviar correos, administrar contactos y mantener un control organizado 
+      de tus tareas diarias. Gracias a su integración con servicios de Google, L.I.A transforma 
+      procesos repetitivos en acciones automáticas, liberando tu tiempo para lo que realmente importa.
     </p>
+
+    <p data-es="
+      Su diseño se basa en simplicidad, accesibilidad y eficiencia. L.I.A aprende tus hábitos, 
+      reconoce patrones de uso y adapta sus sugerencias para acompañarte en entornos académicos, 
+      laborales o personales. La finalidad del sistema es centralizar tus actividades en un entorno 
+      confiable y fácil de usar, para que tomes decisiones más rápidas, organizadas y libres de fricción.
+    "
+    data-en="
+      Its design focuses on simplicity, accessibility, and efficiency. L.I.A learns your habits, 
+      recognizes usage patterns, and adapts its suggestions to support you in academic, professional, 
+      or personal environments. The goal of the system is to centralize your activities into a 
+      reliable and easy-to-use environment, enabling faster and more organized decision-making.
+    ">
+      Su diseño se basa en simplicidad, accesibilidad y eficiencia. L.I.A aprende tus hábitos, 
+      reconoce patrones de uso y adapta sus sugerencias para acompañarte en entornos académicos, 
+      laborales o personales. La finalidad del sistema es centralizar tus actividades en un entorno 
+      confiable y fácil de usar, para que tomes decisiones más rápidas, organizadas y libres de fricción.
+    </p>
+
   </section>
-  <section class="requerimientos">
-  <h2 
-    data-es="Requerimientos mínimos" 
-    data-en="Minimum Requirements"
-  >
-    Requerimientos mínimos
-  </h2>
 
-  <p id="text-requerimientos"
-     data-es="Para garantizar el correcto funcionamiento de L.I.A, el dispositivo debe cumplir los siguientes requisitos mínimos: 
-     • Sistema operativo Android 8.0 (Oreo) o superior. 
-     • Conexión a Internet estable para sincronización con servicios de Google. 
-     • Tener una cuenta de Google activa para acceso a Gmail, Calendar y Drive. 
-     • Permisos habilitados para notificaciones, acceso a contactos y manejo de archivos. 
-     • Un mínimo de 150 MB de espacio disponible para instalación y operación."
-     data-en="To ensure the proper functioning of L.I.A, the device must meet the following minimum requirements:
-     • Android 8.0 (Oreo) or higher. 
-     • Stable Internet connection for synchronization with Google services. 
-     • An active Google account to access Gmail, Calendar, and Drive. 
-     • Enabled permissions for notifications, contacts access, and file management. 
-     • At least 150 MB of available storage for installation and operation.">
-     
-     Para garantizar el correcto funcionamiento de L.I.A, el dispositivo debe cumplir los siguientes requisitos mínimos:  
-     • Sistema operativo Android 8.0 (Oreo) o superior.  
-     • Conexión a Internet estable para sincronización con servicios de Google.  
-     • Tener una cuenta de Google activa para acceso a Gmail, Calendar y Drive.  
-     • Permisos habilitados para notificaciones, acceso a contactos y manejo de archivos.  
-     • Un mínimo de 150 MB de espacio disponible para instalación y operación.
-  </p>
-</section>
+  <!-- ============================
+       FUNCIONES
+  ============================ -->
+  <section id="funciones" class="funciones">
+    <h2 data-es="Funciones principales" data-en="Main features">
+      Funciones principales
+    </h2>
 
-  <!-- CARRUSEL DEL EQUIPO -->
- <div class="equipo-carousel">
-  <div class="equipo-track" id="equipoTrack">
+    <ul class="func-list">
+      <li>
+        <i class="material-icons">event</i>
+        <span data-es="Gestión del calendario y recordatorios inteligentes"
+              data-en="Calendar management and smart reminders">
+          Gestión del calendario y recordatorios inteligentes
+        </span>
+      </li>
+      <li>
+        <i class="material-icons">email</i>
+        <span data-es="Envío y generación asistida de correos"
+              data-en="Assisted email creation and sending">
+          Envío y generación asistida de correos
+        </span>
+      </li>
+      <li>
+        <i class="material-icons">contacts</i>
+        <span data-es="Organización automática de contactos"
+              data-en="Automatic contact organization">
+          Organización automática de contactos
+        </span>
+      </li>
+      <li>
+        <i class="material-icons">assignment</i>
+        <span data-es="Tareas, pendientes y optimización de hábitos"
+              data-en="Tasks, deadlines and habit optimization">
+          Tareas, pendientes y optimización de hábitos
+        </span>
+      </li>
+      <li>
+        <i class="material-icons">android</i>
+        <span data-es="Diseñado exclusivamente para Android"
+              data-en="Designed exclusively for Android">
+          Diseñado exclusivamente para Android
+        </span>
+      </li>
+    </ul>
+  </section>
 
-    <!-- Miembro 1 -->
-    <div class="equipo-item">
-      <img src="RubenFoto.jpg" class="equipo-foto">
-      <h3
-        data-es="Ruben Barrios Luna"
-        data-en="Ruben Barrios Luna">
-        Ruben Barrios Luna
-      </h3>
+  <!-- ============================
+       MOCKUPS
+  ============================ -->
+  <section class="mockups">
+    <h2 data-es="Vista previa" data-en="Preview">Vista previa</h2>
 
-      <p class="equipo-rol"
-         data-es="Desarrollador Principal"
-         data-en="Lead Developer">
-         Desarrollador Principal
-      </p>
-
-      <p class="equipo-desc"
-         data-es="Encargado de programación, desarrollo y arquitectura del proyecto L.I.A."
-         data-en="Responsible for programming, development, and architecture of the L.I.A project.">
-         Encargado de programación, desarrollo y arquitectura del proyecto L.I.A.
-      </p>
-
-      <a class="equipo-link" href="https://mx.linkedin.com/in/ruben-barrios-luna-a6aa4831a" target="_blank">
-        Ver Perfil
-      </a>
+    <div class="mockups-placeholder">
+      <img src="Mockup1.jpg" alt="Mockup 1" style="max-width:45%;margin:10px;">
+      <img src="Mockup3.jpg" alt="Mockup 3" style="max-width:45%;margin:10px;">
     </div>
+  </section>
 
-    <!-- Miembro 2 -->
-    <div class="equipo-item">
-      <img src="DanaFoto.jpg" class="equipo-foto">
-      <h3
-        data-es="Danna Esperanza Reyes Zaragoza"
-        data-en="Danna Esperanza Reyes Zaragoza">
-        Danna Esperanza Reyes Zaragoza
-      </h3>
+  <!-- ============================
+       EQUIPO
+  ============================ -->
+  <section id="equipo">
+    <h2 style="text-align:center;color:var(--azul-rey);font-size:2.2em;margin-bottom:20px;">Equipo</h2>
 
-      <p class="equipo-rol"
-         data-es="Diseñadora"
-         data-en="Designer">
-         Diseñadora
-      </p>
+    <div class="equipo-carousel">
+      <div class="equipo-track" id="equipoTrack">
 
-      <p class="equipo-desc"
-         data-es="Encargada de los diseños de la aplicación."
-         data-en="Responsible for the application's designs.">
-         Encargada de los diseños de la aplicación.
-      </p>
+        <!-- Miembro 1 -->
+        <div class="equipo-item">
+          <img src="RubenFoto.jpg" class="equipo-foto">
+          <h3 data-es="Ruben Barrios Luna" data-en="Ruben Barrios Luna">Ruben Barrios Luna</h3>
+          <p class="equipo-rol" data-es="Desarrollador Principal" data-en="Lead Developer">Desarrollador Principal</p>
+          <p class="equipo-desc"
+             data-es="Encargado de programación, desarrollo y arquitectura del proyecto L.I.A."
+             data-en="Responsible for programming, development and architecture of L.I.A.">
+             Encargado de programación, desarrollo y arquitectura del proyecto L.I.A.
+          </p>
+          <a class="equipo-link" target="_blank" href="https://mx.linkedin.com/in/ruben-barrios-luna-a6aa4831a">Ver Perfil</a>
+        </div>
 
-      <a class="equipo-link" href="https://mx.linkedin.com/in/dan-h-uta-919322329" target="_blank">
-        Ver Perfil
-      </a>
+        <!-- Miembro 2 -->
+        <div class="equipo-item">
+          <img src="DanaFoto.jpg" class="equipo-foto">
+          <h3 data-es="Danna Esperanza Reyes Zaragoza" data-en="Danna Esperanza Reyes Zaragoza">
+            Danna Esperanza Reyes Zaragoza
+          </h3>
+          <p class="equipo-rol" data-es="Diseñadora" data-en="Designer">Diseñadora</p>
+          <p class="equipo-desc"
+             data-es="Encargada de los diseños de la aplicación."
+             data-en="Responsible for the application's design.">
+             Encargada de los diseños de la aplicación.
+          </p>
+          <a class="equipo-link" target="_blank" href="https://mx.linkedin.com/in/dan-h-uta-919322329">Ver Perfil</a>
+        </div>
+
+      </div>
+
+      <!-- indicadores -->
+      <div class="equipo-indicadores">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+      </div>
     </div>
+  </section>
 
-  </div>
-
-  <!-- Indicadores -->
-  <div class="equipo-indicadores" id="indicadores"></div>
-</div>
-  <!-- SECCIÓN DE REDES PARA UNIRSE A LA BETA -->
-<section class="descripcion">
-  <h2 data-es="Forma parte de la beta"
-      data-en="Be part of the beta">
-    Forma parte de la beta
-  </h2>
-
-  <div class="iconos-redes">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxdg2xVqYvehNYigQCSs5ehfz4a3aJEJT_Gp1PJ6dKDqelxQ/viewform?usp=publish-editor" target="_blank">
-      <i class="fa-regular fa-clipboard"></i>
-      <span data-es="Unirme a la Beta" data-en="Join the Beta">Unirme a la Beta</span>
-    </a>
-  </div>
-</section>
-
-
-
-  <!-- CONTACTOS -->
-  <section class="contactos">
-    <h2
-    data-es="Contactos"
-    data-en="Contacts"
-    >
-    Contactos</h2>
+  <!-- ============================
+       CONTACTO
+  ============================ -->
+  <section id="contactos" class="contactos">
+    <h2 data-es="Contacto" data-en="Contact">Contacto</h2>
 
     <div class="contacto-item">
-      <i class="fa-solid fa-envelope"></i>
-      <div>
-        <strong>Ruben Barrios Luna</strong><br>
-        <a href="mailto:rubenbarriosluna@gmail.com">rubenbarriosluna@gmail.com</a>
-      </div>
+      <i class="material-icons">person</i>
+      <a href="mailto:ruben.bl.0311@gmail.com">ruben.bl.0311@gmail.com</a>
     </div>
 
     <div class="contacto-item">
-      <i class="fa-solid fa-envelope"></i>
-      <div>
-        <strong>L.I.A</strong><br>
-        <a href="mailto:lia.asistente.ai@gmail.com">lia.asistente.ai@gmail.com</a>
-      </div>
+      <i class="material-icons">support_agent</i>
+      <a href="mailto:lia.asistente.ai@gmail.com">lia.asistente.ai@gmail.com</a>
     </div>
+  </section>
+
+  <!-- ============================
+       CTA – Unirme a la beta
+  ============================ -->
+  <section class="cta">
+    <h2 data-es="¿Quieres probar L.I.A antes que nadie?"
+        data-en="Want to try L.I.A before anyone else?">
+        ¿Quieres probar L.I.A antes que nadie?
+    </h2>
+
+   <button class="btn-beta" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfxdg2xVqYvehNYigQCSs5ehfz4a3aJEJT_Gp1PJ6dKDqelxQ/viewform?usp=header'">
+  Unirme a la Beta
+</button>
+
   </section>
 
 </main>
 
-<footer
- data-es="© 2025 L.I.A - Todos los derechos reservados."
-  data-en="© 2025 L.I.A - All rights reserved.">
- 
-  © 2025 L.I.A - Todos los derechos reservados.
+<!-- ============================
+     FOOTER
+============================ -->
+<footer>
+  © 2025 L.I.A – Todos los derechos reservados
 </footer>
 
-
-<!----------------- JS ----------------->
+<!-- ============================
+     SCRIPT CAMBIO DE IDIOMA
+============================ -->
 <script>
-let idiomaActual = "es"; // idioma inicial
+  let idioma = "es";
 
-function cambiarIdioma() {
-  idiomaActual = idiomaActual === "es" ? "en" : "es";
+  function cambiarIdioma() {
+    idioma = idioma === "es" ? "en" : "es";
+    document.querySelectorAll("[data-es]").forEach(el => {
+      el.textContent = el.getAttribute(`data-${idioma}`);
+    });
+  }
 
-  // Cambiar texto de todos los elementos con data-es y data-en
-  document.querySelectorAll("[data-es]").forEach(el => {
-    el.textContent = el.getAttribute(`data-${idiomaActual}`);
-  });
+  // CARRUSEL
+  let currentSlide = 0;
+  function goToSlide(n) {
+    const track = document.getElementById("equipoTrack");
+    const dots = document.querySelectorAll(".dot");
 
-  // Cambiar texto del botón EN/ES
-  const btn = document.querySelector(".idioma-btn");
-  btn.textContent = idiomaActual === "es" ? "EN" : "ES";
-}
+    currentSlide = n;
+
+    track.style.transform = `translateX(-${n * 100}%)`;
+
+    dots.forEach(d => d.classList.remove("active"));
+    dots[n].classList.add("active");
+  }
 </script>
-
-<script>
-let equipoIndex = 0;
-
-const track = document.getElementById("equipoTrack");
-const items = track.children.length;
-
-const indicadores = document.getElementById("indicadores");
-
-// Crear indicadores
-for (let i = 0; i < items; i++) {
-  const dot = document.createElement("div");
-  dot.classList.add("dot");
-  if (i === 0) dot.classList.add("active");
-
-  dot.addEventListener("click", () => {
-    equipoIndex = i;
-    actualizarCarrusel();
-    reiniciarAutoSlide();
-  });
-
-  indicadores.appendChild(dot);
-}
-
-function actualizarCarrusel() {
-  track.style.transform = `translateX(-${equipoIndex * 100}%)`;
-
-  // actualizar indicador activo
-  [...indicadores.children].forEach((d, idx) => {
-    d.classList.toggle("active", idx === equipoIndex);
-  });
-}
-
-function autoSlide() {
-  equipoIndex = (equipoIndex + 1) % items;
-  actualizarCarrusel();
-}
-
-let autoSlideInterval = setInterval(autoSlide, 5000);
-
-function reiniciarAutoSlide() {
-  clearInterval(autoSlideInterval);
-  autoSlideInterval = setInterval(autoSlide, 5000);
-}
-</script>
-
 
 </body>
 </html>
