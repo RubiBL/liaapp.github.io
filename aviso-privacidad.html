@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aviso de Privacidad – L.I.A</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    :root {
+      --azul-rey: #0033a0;
+      --azul-oscuro: #001e66;
+      --blanco: #ffffff;
+      --gris-claro: #f0f2f5;
+      --sombra: rgba(0, 0, 0, 0.15);
+      --glass: rgba(255, 255, 255, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.35);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, var(--gris-claro), #e6ecf4);
+      color: #333;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .privacy-container {
+      width: 100%;
+      max-width: 1000px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      box-shadow: 0 12px 35px var(--sombra);
+      overflow: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    .privacy-header {
+      background: linear-gradient(135deg, var(--azul-rey), var(--azul-oscuro));
+      color: var(--blanco);
+      padding: 40px;
+      position: relative;
+    }
+
+    .privacy-header h1 {
+      margin: 0;
+      font-size: 2.6em;
+      font-weight: 700;
+    }
+
+    .privacy-header p {
+      margin-top: 8px;
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    /* ===== LANGUAGE SELECTOR ===== */
+    .language-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .lang-btn {
+      padding: 7px 14px;
+      border-radius: 10px;
+      border: 2px solid var(--blanco);
+      background: transparent;
+      color: var(--blanco);
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--blanco);
+      color: var(--azul-rey);
+    }
+
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ===== CONTENT ===== */
+    .privacy-content {
+      background: var(--blanco);
+      padding: 45px;
+      max-height: 65vh;
+      overflow-y: auto;
+    }
+
+    .privacy-content h2 {
+      color: var(--azul-rey);
+      font-size: 1.45em;
+      margin-top: 35px;
+    }
+
+    .privacy-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .privacy-content p {
+      font-size: 1.05em;
+      line-height: 1.75;
+      margin-bottom: 16px;
+      color: #444;
+    }
+
+    .privacy-content ul {
+      padding-left: 22px;
+      margin-bottom: 18px;
+    }
+
+    .privacy-content li {
+      font-size: 1.05em;
+      line-height: 1.7;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    /* ===== FOOTER ===== */
+    .privacy-footer {
+      background: #eef2f8;
+      padding: 18px;
+      text-align: center;
+      font-size: 0.95em;
+      color: #555;
+      border-top: 1px solid #d6dbe5;
+    }
+
+    @media (max-width: 600px) {
+      .privacy-header h1 {
+        font-size: 2em;
+      }
+      .privacy-content {
+        padding: 30px;
+      }
+    }
+    /* -------- BOTÓN RETORNO -------- */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--blanco);            /* color visible por defecto */
+  font-weight: 500;
+  text-decoration: none;
+
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+
+.back-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 12px 0 18px;
+}
+
+@media (max-width: 600px) {
+  .back-container {
+    justify-content: center;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+<body>
+
+<div class="privacy-container">
+
+  <!-- HEADER -->
+  <div class="privacy-header">
+
+    <div class="language-selector">
+      <button class="lang-btn active" data-lang="es" onclick="changeLanguage('es')">ES</button>
+      <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
+      <button class="lang-btn" data-lang="de" onclick="changeLanguage('de')">DE</button>
+    </div>
+
+    <!-- BOTÓN REGRESAR -->
+    <div class="back-container">
+      <a href="index.html" class="back-btn">
+        <span class="material-icons" style="font-size:18px;">arrow_back</span>
+        Regresar
+      </a>
+    </div>
+
+    <h1 data-i18n="title">Aviso de Privacidad</h1>
+    <p data-i18n="subtitle">LIA - Asistente Personal</p>
+
+  </div>
+
+  <!-- CONTENT -->
+
+
+  <!-- CONTENT -->
+  <div class="privacy-content">
+
+    <h2 data-i18n="section1_title"></h2>
+    <p data-i18n="section1_text"></p>
+
+    <h2 data-i18n="section2_title"></h2>
+    <p data-i18n="section2_intro"></p>
+    <ul>
+      <li data-i18n="section2_item1"></li>
+      <li data-i18n="section2_item2"></li>
+      <li data-i18n="section2_item3"></li>
+      <li data-i18n="section2_item4"></li>
+      <li data-i18n="section2_item5"></li>
+      <li data-i18n="section2_item6"></li>
+      <li data-i18n="section2_item7"></li>
+      <li data-i18n="section2_item8"></li>
+      <li data-i18n="section2_item9"></li>
+    </ul>
+
+    <h2 data-i18n="section3_title"></h2>
+    <p data-i18n="section3_text"></p>
+
+    <h2 data-i18n="section4_title"></h2>
+    <p data-i18n="section4_text"></p>
+
+    <h2 data-i18n="section5_title"></h2>
+    <p data-i18n="section5_text"></p>
+
+    <h2 data-i18n="section6_title"></h2>
+    <p data-i18n="section6_text"></p>
+
+    <h2 data-i18n="section7_title"></h2>
+    <p data-i18n="section7_text"></p>
+
+    <h2 data-i18n="section8_title"></h2>
+    <p data-i18n="section8_text"></p>
+
+    <h2 data-i18n="section9_title"></h2>
+    <p data-i18n="section9_text"></p>
+
+    <h2 data-i18n="section10_title"></h2>
+    <p data-i18n="section10_text"></p>
+
+    <h2 data-i18n="section11_title"></h2>
+    <p data-i18n="section11_text"></p>
+
+    <h2 data-i18n="section12_title"></h2>
+    <p data-i18n="section12_text"></p>
+
+    <h2 data-i18n="section13_title"></h2>
+    <p data-i18n="section13_text"></p>
+
+    <h2 data-i18n="section14_title"></h2>
+    <p data-i18n="section14_text"></p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="privacy-footer">
+    © 2025 L.I.A – Privacy Policy
+  </div>
+
+</div>
+
+<!-- ===== i18n SCRIPT ===== -->
+<script>
+/* ⬇️ PEGA AQUÍ EXACTAMENTE EL OBJETO translations
+   (el mismo que ya tienes con ES / EN / DE)
+*/
+const translations = {
+  es: {
+    title: 'Aviso de Privacidad',
+    subtitle: 'LIA - Asistente Personal',
+
+    section1_title: '1. Datos que Recopilamos',
+    section1_text: 'LIA recopila únicamente los datos estrictamente necesarios para su funcionamiento, incluyendo nombre, correo electrónico, identificadores de cuenta, tokens de acceso y renovación, contactos y grupos creados por el usuario, eventos de calendario, archivos compartidos, registros de transacciones, mensajes enviados y registros técnicos de actividad (logs) con fines de seguridad y auditoría.',
+
+    section2_title: '2. Finalidad del Tratamiento de Datos',
+    section2_intro: 'Los datos recopilados se utilizan exclusivamente para:',
+    section2_item1: 'Autenticación segura mediante Google OAuth y gestión de sesiones',
+    section2_item2: 'Generación, almacenamiento cifrado, renovación y auditoría de tokens',
+    section2_item3: 'Creación, consulta y compartición de eventos en Google Calendar',
+    section2_item4: 'Búsqueda y compartición de archivos en Google Drive bajo instrucciones del usuario',
+    section2_item5: 'Registro y consulta de transacciones mediante Google Sheets',
+    section2_item6: 'Envío de correos electrónicos en nombre del usuario a través de Gmail',
+    section2_item7: 'Gestión de contactos y grupos definidos por el usuario',
+    section2_item8: 'Procesamiento de texto mediante servicios de inteligencia artificial para interpretar instrucciones',
+    section2_item9: 'Seguridad, auditoría, prevención de fraudes y mejora del servicio',
+
+    section3_title: '3. Uso Limitado de Datos (Google OAuth)',
+    section3_text: 'El uso de datos obtenidos a través de las APIs de Google cumple estrictamente con la política de Uso Limitado de Google. Los datos no se utilizan para publicidad, venta, elaboración de perfiles comerciales ni para el entrenamiento de modelos de inteligencia artificial.',
+
+    section4_title: '4. Procesamiento por Terceros',
+    section4_text: 'LIA utiliza servicios de terceros como Google APIs y OpenAI para procesar solicitudes del usuario. Únicamente se transmite la información mínima necesaria para ejecutar la acción solicitada. Cada proveedor opera bajo sus propias políticas de privacidad.',
+
+    section5_title: '5. Seguridad de la Información',
+    section5_text: 'Se implementan medidas técnicas y organizativas de seguridad, incluyendo cifrado AES de datos sensibles, almacenamiento hasheado de tokens de renovación, control de sesiones, registros de auditoría y acceso restringido a credenciales y archivos de configuración.',
+
+    section6_title: '6. Registros y Retención de Datos',
+    section6_text: 'El sistema mantiene registros de actividad únicamente con fines de seguridad, auditoría y diagnóstico. Los datos se conservan solo durante el tiempo necesario para cumplir con las finalidades descritas o mientras la cuenta permanezca activa.',
+
+    section7_title: '7. Responsabilidad y Uso del Asistente',
+    section7_text: 'LIA es un asistente automatizado que ejecuta acciones exclusivamente bajo instrucciones explícitas del usuario. El desarrollador no se responsabiliza por el uso indebido, configuraciones incorrectas, accesos no autorizados otorgados por el usuario ni por decisiones tomadas a partir de la información generada.',
+
+    section8_title: '8. Derechos del Usuario y Control de Datos',
+    section8_text: 'El usuario puede acceder, modificar o solicitar la eliminación de su información personal, así como revocar los permisos otorgados a Google en cualquier momento. La revocación de permisos puede limitar o deshabilitar funcionalidades.',
+
+    section9_title: '9. Información y Transparencia',
+    section9_text: 'Este aviso tiene carácter informativo y describe de forma transparente cómo se manejan los datos personales dentro de la aplicación.',
+
+    section10_title: '10. Contacto',
+    section10_text: 'Para dudas relacionadas con privacidad o protección de datos, puedes contactarnos mediante la sección de sugerencias de la aplicación o al correo lia.asistente.ai@gmail.com.',
+
+    section11_title: '11. Eliminación de Datos',
+    section11_text: 'El usuario puede solicitar la eliminación de sus datos personales en cualquier momento. Al eliminar la cuenta o revocar permisos, los datos y tokens se invalidan y eliminan de forma segura, salvo aquellos que deban conservarse temporalmente por razones legales o de seguridad.',
+
+    section12_title: '12. Uso por Menores de Edad',
+    section12_text: 'LIA no está dirigida a menores de 13 años. No recopilamos intencionalmente información de menores. En caso de detección, los datos serán eliminados de inmediato.',
+
+    section13_title: '13. Cambios al Aviso de Privacidad',
+    section13_text: 'Este aviso puede actualizarse por cambios legales, técnicos u operativos. Las modificaciones relevantes serán notificadas dentro de la aplicación.',
+
+    section14_title: '14. Solicitudes de Privacidad y Cumplimiento',
+    section14_text: 'Para ejercer derechos de privacidad o realizar consultas relacionadas con Google OAuth o Google Play, escribe a lia.asistente.ai@gmail.com.'
+  },
+
+  en: {
+    title: 'Privacy Notice',
+    subtitle: 'LIA - Personal Assistant',
+
+    section1_title: '1. Data We Collect',
+    section1_text: 'LIA collects only data strictly necessary for operation, including name, email address, account identifiers, access and refresh tokens, user-created contacts and groups, calendar events, shared files, transaction records, sent messages and technical activity logs for security and auditing purposes.',
+
+    section2_title: '2. Purpose of Data Processing',
+    section2_intro: 'Collected data is used exclusively to:',
+    section2_item1: 'Secure authentication via Google OAuth and session management',
+    section2_item2: 'Generation, encrypted storage, refresh and auditing of tokens',
+    section2_item3: 'Creation, viewing and sharing of Google Calendar events',
+    section2_item4: 'Searching and sharing Google Drive files upon user instruction',
+    section2_item5: 'Recording and consulting transactions via Google Sheets',
+    section2_item6: 'Sending emails on behalf of the user through Gmail',
+    section2_item7: 'Managing user-defined contacts and groups',
+    section2_item8: 'Text processing using AI services to interpret instructions',
+    section2_item9: 'Security, auditing, fraud prevention and service improvement',
+
+    section3_title: '3. Limited Use of Google User Data',
+    section3_text: 'All data obtained through Google APIs is handled in strict compliance with Google’s Limited Use policy. Data is not used for advertising, sale, profiling or AI model training.',
+
+    section4_title: '4. Third-Party Processing',
+    section4_text: 'LIA relies on third-party services such as Google APIs and OpenAI to process user requests. Only the minimum necessary information is shared.',
+
+    section5_title: '5. Data Security',
+    section5_text: 'Technical and organizational safeguards are applied, including AES encryption, hashed refresh tokens, session controls, audit logs and restricted access to credentials.',
+
+    section6_title: '6. Logs and Data Retention',
+    section6_text: 'Activity logs are retained only as long as necessary for security, auditing and diagnostic purposes, or while the account remains active.',
+
+    section7_title: '7. Assistant Responsibility',
+    section7_text: 'LIA is an automated assistant that executes actions solely based on explicit user instructions. The developer is not responsible for misuse, misconfiguration or decisions based on generated information.',
+
+    section8_title: '8. User Rights and Data Control',
+    section8_text: 'Users may access, modify or request deletion of their personal data, as well as revoke Google permissions at any time. Revoking permissions may limit functionality.',
+
+    section9_title: '9. Transparency',
+    section9_text: 'This notice is provided for informational purposes to transparently explain how personal data is handled within the application.',
+
+    section10_title: '10. Contact',
+    section10_text: 'For privacy-related questions, contact us via the app or at lia.asistente.ai@gmail.com.',
+
+    section11_title: '11. Data Deletion',
+    section11_text: 'Users may request deletion of their data at any time. Upon account deletion or permission revocation, data and tokens are securely removed, except where temporary retention is required for legal or security reasons.',
+
+    section12_title: '12. Children’s Privacy',
+    section12_text: 'LIA is not intended for children under the age of 13. We do not knowingly collect personal data from children.',
+
+    section13_title: '13. Changes to This Notice',
+    section13_text: 'This notice may be updated due to legal, technical or operational changes. Significant updates will be communicated within the application.',
+
+    section14_title: '14. Privacy and Compliance Requests',
+    section14_text: 'For privacy or compliance requests related to Google OAuth or Google Play, please contact lia.asistente.ai@gmail.com.'
+  },
+
+  de: {
+    title: 'Datenschutzhinweis',
+    subtitle: 'LIA - Persönlicher Assistent',
+
+    section1_title: '1. Erhobene Daten',
+    section1_text: 'LIA erhebt ausschließlich die für den Betrieb erforderlichen Daten, darunter Name, E-Mail-Adresse, Kontokennungen, Zugriffs- und Aktualisierungstokens, vom Nutzer erstellte Kontakte und Gruppen, Kalenderereignisse, freigegebene Dateien, Transaktionsprotokolle, gesendete Nachrichten sowie technische Aktivitätsprotokolle zu Sicherheits- und Prüfzwecken.',
+
+    section2_title: '2. Zweck der Datenverarbeitung',
+    section2_intro: 'Die erhobenen Daten werden ausschließlich verwendet für:',
+    section2_item1: 'Sichere Authentifizierung über Google OAuth und Sitzungsverwaltung',
+    section2_item2: 'Erzeugung, verschlüsselte Speicherung, Erneuerung und Prüfung von Tokens',
+    section2_item3: 'Erstellung, Anzeige und Freigabe von Google-Kalenderereignissen',
+    section2_item4: 'Suche und Freigabe von Google-Drive-Dateien auf Nutzeranweisung',
+    section2_item5: 'Erfassung und Abfrage von Transaktionen über Google Sheets',
+    section2_item6: 'Versand von E-Mails im Namen des Nutzers über Gmail',
+    section2_item7: 'Verwaltung nutzerdefinierter Kontakte und Gruppen',
+    section2_item8: 'Textverarbeitung mittels KI-Diensten zur Befehlsinterpretation',
+    section2_item9: 'Sicherheit, Auditierung, Betrugsprävention und Verbesserung des Dienstes',
+
+    section3_title: '3. Eingeschränkte Nutzung von Google-Daten',
+    section3_text: 'Alle über Google-APIs erhaltenen Daten werden gemäß der Google-Richtlinie zur eingeschränkten Nutzung verarbeitet. Es erfolgt keine Werbung, kein Verkauf, keine Profilbildung und kein Training von KI-Modellen.',
+
+    section4_title: '4. Verarbeitung durch Dritte',
+    section4_text: 'LIA nutzt Drittanbieter wie Google APIs und OpenAI zur Verarbeitung von Nutzeranfragen. Es werden nur die minimal erforderlichen Daten übertragen.',
+
+    section5_title: '5. Datensicherheit',
+    section5_text: 'Es werden technische und organisatorische Sicherheitsmaßnahmen eingesetzt, darunter AES-Verschlüsselung, gehashte Tokens, Sitzungsverwaltung und Zugriffsbeschränkungen.',
+
+    section6_title: '6. Protokollierung und Aufbewahrung',
+    section6_text: 'Aktivitätsprotokolle werden nur so lange gespeichert, wie es für Sicherheits-, Prüf- und Diagnosezwecke erforderlich ist.',
+
+    section7_title: '7. Verantwortung des Assistenten',
+    section7_text: 'LIA ist ein automatisierter Assistent, der ausschließlich auf ausdrückliche Nutzeranweisungen reagiert. Die Entwickler übernehmen keine Haftung für Fehlbedienung oder Entscheidungen auf Basis generierter Inhalte.',
+
+    section8_title: '8. Nutzerrechte',
+    section8_text: 'Nutzer können jederzeit auf ihre Daten zugreifen, diese ändern, löschen oder Google-Berechtigungen widerrufen.',
+
+    section9_title: '9. Transparenz',
+    section9_text: 'Dieser Hinweis dient ausschließlich Informationszwecken und erläutert transparent den Umgang mit personenbezogenen Daten.',
+
+    section10_title: '10. Kontakt',
+    section10_text: 'Bei Fragen zum Datenschutz kontaktieren Sie uns bitte unter lia.asistente.ai@gmail.com.',
+
+    section11_title: '11. Datenlöschung',
+    section11_text: 'Nutzer können jederzeit die Löschung ihrer Daten verlangen. Nach Widerruf oder Kontolöschung werden Daten sicher entfernt, sofern keine gesetzliche Aufbewahrungspflicht besteht.',
+
+    section12_title: '12. Datenschutz für Kinder',
+    section12_text: 'LIA richtet sich nicht an Kinder unter 13 Jahren.',
+
+    section13_title: '13. Änderungen am Datenschutzhinweis',
+    section13_text: 'Dieser Datenschutzhinweis kann aktualisiert werden. Wesentliche Änderungen werden in der App kommuniziert.',
+
+    section14_title: '14. Datenschutz- und Compliance-Anfragen',
+    section14_text: 'Anfragen zu Datenschutz oder Google-Compliance richten Sie bitte an lia.asistente.ai@gmail.com.'
+  }
+};
+
+
+let currentLanguage = 'es';
+
+function changeLanguage(lang) {
+  currentLanguage = lang;
+  localStorage.setItem('preferredLanguage', lang);
+
+  document.querySelectorAll('.lang-btn')
+    .forEach(btn => btn.classList.remove('active'));
+
+  document.querySelector(`[data-lang="${lang}"]`)
+    .classList.add('active');
+
+  updateLanguage();
+}
+
+function updateLanguage() {
+  const t = translations[currentLanguage];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key]) el.textContent = t[key];
+  });
+  document.title = `${t.title} – L.I.A`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('preferredLanguage');
+  const browser = navigator.language.split('-')[0];
+
+  currentLanguage = translations[saved]
+    ? saved
+    : translations[browser]
+      ? browser
+      : 'es';
+
+  changeLanguage(currentLanguage);
+});
+</script>
+
+</body>
+</html>
